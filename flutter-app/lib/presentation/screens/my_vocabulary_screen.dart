@@ -256,16 +256,21 @@ class _MyVocabularyScreenState extends State<MyVocabularyScreen>
           const BrowseWordsScreen(),
         ],
       ),
-      floatingActionButton: Consumer<VocabularyProvider>(
-        builder: (context, provider, _) {
-          if (_tabController.index == 0 && provider.vocabulary.isNotEmpty) {
-            return FloatingActionButton(
-              onPressed: _onAddWord,
-              tooltip: 'Add word',
-              child: const Icon(Icons.add_rounded),
-            );
-          }
-          return const SizedBox.shrink();
+      floatingActionButton: ListenableBuilder(
+        listenable: _tabController,
+        builder: (context, _) {
+          return Consumer<VocabularyProvider>(
+            builder: (context, provider, _) {
+              if (_tabController.index == 0 && provider.vocabulary.isNotEmpty) {
+                return FloatingActionButton(
+                  onPressed: _onAddWord,
+                  tooltip: 'Add word',
+                  child: const Icon(Icons.add_rounded),
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          );
         },
       ),
     );
