@@ -83,3 +83,6 @@ flutter run
 | GET    | `/api/vocabulary`     | List saved vocabulary  |
 | POST   | `/api/vocabulary`     | Save a word            |
 | DELETE | `/api/vocabulary/:id` | Remove a saved word    |
+
+ ## Demo
+<img src="assets/demo.gif" width="320" alt="App Demo">
